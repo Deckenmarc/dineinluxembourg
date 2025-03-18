@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { topRestaurants, cities, cuisines } from "@/data/restaurants";
 
-export default function Home() {
+export default function HomePage() {
   // Filter restaurants that:
   // 1. Have a high rating (>= 4.8)
   // 2. Have sufficient reviews (> 20)

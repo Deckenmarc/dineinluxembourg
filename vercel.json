@@ -1,7 +1,8 @@
 {
-  "buildCommand": "./build.sh",
-  "devCommand": "bun run dev",
-  "framework": null,
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "framework": "nextjs",
+  "installCommand": "bun install",
   "outputDirectory": ".vercel/output",
   "git": {
     "deploymentEnabled": {
