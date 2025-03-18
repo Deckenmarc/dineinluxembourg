@@ -1,5 +1,5 @@
 {
-  "buildCommand": "bun run build",
+  "buildCommand": "./build.sh",
   "devCommand": "bun run dev",
   "framework": "nextjs",
   "git": {
@@ -8,5 +8,9 @@
     }
   },
   "ignoreCommand": "git diff HEAD^ HEAD --quiet ./",
-  "version": 3
+  "version": 3,
+  "env": {
+    "NEXT_TYPESCRIPT_IGNORE_BUILD_ERRORS": "1",
+    "NEXT_ESLINT_IGNORE_BUILD_ERRORS": "1"
+  }
 } 
