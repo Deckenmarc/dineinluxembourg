@@ -26,7 +26,11 @@
     },
     {
       "src": "/(.*)",
-      "check": true
+      "check": true,
+      "continue": true
+    },
+    {
+      "handle": "rewrite"
     },
     {
       "src": "/(.*)",
