@@ -2,16 +2,31 @@
   "version": 3,
   "routes": [
     {
-      "src": "^/static/(.*)",
-      "headers": { "cache-control": "public,max-age=31536000,immutable" },
-      "continue": true
-    },
-    {
       "handle": "filesystem"
     },
     {
+      "src": "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media)/.+",
+      "status": 404,
+      "continue": true
+    },
+    {
+      "src": "/_next/data/(.*)\\.json",
+      "dest": "/api/nextdata?original=$1"
+    },
+    {
+      "handle": "resource"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1",
+      "continue": true
+    },
+    {
+      "handle": "miss"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/index"
     }
   ]
 } 
