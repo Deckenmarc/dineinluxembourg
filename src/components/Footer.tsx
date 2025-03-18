@@ -80,12 +80,7 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link
-                  href="/award"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Award
-                </Link>
+             
               </li>
             </ul>
           </div>
