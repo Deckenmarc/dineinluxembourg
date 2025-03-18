@@ -30,13 +30,14 @@ export async function generateStaticParams() {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     city: string;
-  };
+  }>;
 }
 
 export default async function CityPage({ params }: PageProps) {
-  const citySlug = params.city;
+  const resolvedParams = await params;
+  const citySlug = resolvedParams.city;
   const cityName = citySlug.replace(/-/g, ' ');
   const cityInfo = cities.find(
     (c: City) => c.path === `/${citySlug}` || c.name.toLowerCase() === cityName

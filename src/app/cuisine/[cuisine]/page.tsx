@@ -17,14 +17,21 @@ interface Restaurant {
   cuisineType: string;
 }
 
+interface PageProps {
+  params: Promise<{
+    cuisine: string;
+  }>;
+}
+
 export function generateStaticParams() {
   return cuisines.map((cuisine) => ({
     cuisine: cuisine.path.substring(9), // Remove the leading "/cuisine/"
   }));
 }
 
-export default function CuisinePage({ params }: { params: { cuisine: string } }) {
-  const cuisineSlug = params.cuisine;
+export default async function CuisinePage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const cuisineSlug = resolvedParams.cuisine;
   const cuisineName = cuisineSlug.replace(/-/g, ' ');
   const cuisineInfo = cuisines.find(
     (c) => c.path === `/cuisine/${cuisineSlug}` || 
