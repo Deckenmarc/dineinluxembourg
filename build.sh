@@ -15,37 +15,26 @@ export NEXT_DIST_DIR=.next
 # Build the project
 bun run build
 
-# Create proper Vercel output structure
-echo "Creating Vercel deployment structure..."
-mkdir -p .vercel/output/static
-mkdir -p .vercel/output/functions/_next/server
+# Create Vercel deployment structure
+echo "Creating simplified Vercel deployment structure..."
 
-# Copy static assets
-cp -r .next/static .vercel/output/static/_next/
+# Ensure output directories exist
+mkdir -p .vercel/output/static/_next/static
+mkdir -p .vercel/output/functions
 
-# Copy server files
-if [ -d ".next/server" ]; then
-  cp -r .next/server/pages .vercel/output/functions/
-  cp -r .next/server/chunks .vercel/output/functions/_next/server/
+# Copy static assets from Next.js build
+if [ -d ".next/static" ]; then
+  cp -r .next/static/ .vercel/output/static/_next/
 fi
 
-# Copy required Next.js files
-if [ -f ".next/routes-manifest.json" ]; then
-  cp .next/routes-manifest.json .vercel/output/
+# Copy public folder content if it exists
+if [ -d "public" ]; then
+  cp -r public/* .vercel/output/static/
 fi
 
-if [ -f ".next/required-server-files.json" ]; then
-  cp .next/required-server-files.json .vercel/output/
+# Ensure we have our fallback page
+if [ ! -f ".vercel/output/static/index.html" ]; then
+  touch .vercel/output/static/index.html
 fi
 
-if [ -f ".next/middleware-manifest.json" ]; then
-  cp .next/middleware-manifest.json .vercel/output/
-fi
-
-# Create serverless functions
-echo "Creating serverless function for pages..."
-cat > .vercel/output/functions/index.func <<EOL
-export { default } from "../../src/app/page.js";
-EOL
-
-echo "Done!" 
+echo "Build completed successfully!" 

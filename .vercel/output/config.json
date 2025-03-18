@@ -1,40 +1,7 @@
 {
   "version": 3,
   "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media)/.+",
-      "status": 404,
-      "continue": true
-    },
-    {
-      "src": "/_next/data/(.*)\\.json",
-      "dest": "/api/nextdata?original=$1"
-    },
-    {
-      "handle": "resource"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1",
-      "continue": true
-    },
-    {
-      "handle": "miss"
-    },
-    {
-      "src": "/(.*)",
-      "check": true,
-      "continue": true
-    },
-    {
-      "handle": "rewrite"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 } 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dine in Luxembourg</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 1rem;
+    }
+    h1 {
+      color: #333;
+    }
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .restaurant-card {
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .restaurant-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .restaurant-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .restaurant-info {
+      padding: 1rem;
+    }
+    .restaurant-name {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .restaurant-rating {
+      color: #f59e0b;
+      margin-bottom: 0.5rem;
+    }
+    .restaurant-address {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eaeaea;
+      text-align: center;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dine in Luxembourg</h1>
+    <p>Discover the best restaurants in Luxembourg</p>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Top Restaurants</h2>
+      <div class="restaurant-grid">
+        <article class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" alt="Restaurant" class="restaurant-image">
+          <div class="restaurant-info">
+            <h3 class="restaurant-name">Clairefontaine</h3>
+            <div class="restaurant-rating">★★★★★</div>
+            <p class="restaurant-address">9 Place de Clairefontaine, Luxembourg</p>
+          </div>
+        </article>
+        <article class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4" alt="Restaurant" class="restaurant-image">
+          <div class="restaurant-info">
+            <h3 class="restaurant-name">Mosconi</h3>
+            <div class="restaurant-rating">★★★★★</div>
+            <p class="restaurant-address">13 Rue Münster, Luxembourg</p>
+          </div>
+        </article>
+        <article class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17" alt="Restaurant" class="restaurant-image">
+          <div class="restaurant-info">
+            <h3 class="restaurant-name">La Cristallerie</h3>
+            <div class="restaurant-rating">★★★★★</div>
+            <p class="restaurant-address">18 Place d'Armes, Luxembourg</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>© 2023 Dine in Luxembourg. All rights reserved.</p>
+  </footer>
+</body>
+</html> 
