@@ -29,15 +29,15 @@ export async function generateStaticParams() {
   }));
 }
 
-interface PageProps {
-  params: Promise<{
+type Props = {
+  params: {
     city: string;
-  }>;
-}
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export default async function CityPage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const citySlug = resolvedParams.city;
+export default async function CityPage({ params }: Props) {
+  const citySlug = params.city;
   const cityName = citySlug.replace(/-/g, ' ');
   const cityInfo = cities.find(
     (c: City) => c.path === `/${citySlug}` || c.name.toLowerCase() === cityName
