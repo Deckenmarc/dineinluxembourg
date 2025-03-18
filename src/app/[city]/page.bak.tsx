@@ -4,12 +4,12 @@ import RestaurantCard from "@/components/RestaurantCard";
 import { cities } from "@/data/restaurants";
 import { topRestaurants } from "@/data/restaurants";
 
-// @ts-nocheck - Disable TypeScript checking for this file
+// @ts-ignore - Suppress all TypeScript errors in this file
 export default async function CityPage({ params }: any) {
   const citySlug = params.city;
   const cityName = citySlug.replace(/-/g, ' ');
   const cityInfo = cities.find(
-    (c) => c.path === `/${citySlug}` || c.name.toLowerCase() === cityName
+    (c: any) => c.path === `/${citySlug}` || c.name.toLowerCase() === cityName
   );
 
   if (!cityInfo) {
@@ -25,7 +25,7 @@ export default async function CityPage({ params }: any) {
     );
   }
 
-  const cityRestaurants = topRestaurants.filter((restaurant) =>
+  const cityRestaurants = topRestaurants.filter((restaurant: any) =>
     restaurant.address.toLowerCase().includes(cityName.toLowerCase())
   );
 
@@ -51,7 +51,7 @@ export default async function CityPage({ params }: any) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cityRestaurants.map((restaurant) => (
+          {cityRestaurants.map((restaurant: any) => (
             <RestaurantCard
               key={restaurant.id}
               id={restaurant.id}
