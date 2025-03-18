@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RestaurantCard from "@/components/RestaurantCard";
-import { topRestaurants, cities } from "@/data/restaurants";
+import { cities } from "@/data/restaurants";
+import { topRestaurants } from "@/data/restaurants";
 
 // Define the restaurant type inline to avoid TypeScript errors
 interface Restaurant {
@@ -12,75 +13,91 @@ interface Restaurant {
   reviewCount: number;
   address: string;
   phone: string;
-  websiteUrl?: string;
+  websiteUrl: string;
   isTopRestaurant: boolean;
   cuisineType: string;
 }
 
-export function generateStaticParams() {
-  return cities.map((city) => ({
-    city: city.path.substring(1), // Remove the leading slash
+interface City {
+  name: string;
+  path: string;
+}
+
+export async function generateStaticParams() {
+  return cities.map((city: City) => ({
+    city: city.path.slice(1),
   }));
 }
 
-export default function CityPage({ params }: { params: { city: string } }) {
+interface PageProps {
+  params: {
+    city: string;
+  };
+}
+
+export default async function CityPage({ params }: PageProps) {
   const citySlug = params.city;
   const cityName = citySlug.replace(/-/g, ' ');
   const cityInfo = cities.find(
-    (c) => c.path === `/${citySlug}` || c.name.toLowerCase() === cityName
+    (c: City) => c.path === `/${citySlug}` || c.name.toLowerCase() === cityName
   );
-  
-  // Filter restaurants by city with proper type assertion
-  const restaurantsWithTypes = topRestaurants as unknown as Restaurant[];
-  
-  const cityRestaurants = restaurantsWithTypes
-    .filter((restaurant) => restaurant.address.includes(cityInfo?.name || ''))
-    // Sort restaurants by rating (highest to lowest)
-    .sort((a, b) => b.rating - a.rating);
+
+  if (!cityInfo) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <main className="container mx-auto px-4 py-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-6">City Not Found</h1>
+          <p className="text-gray-600">The requested city could not be found.</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  const cityRestaurants = topRestaurants.filter((restaurant) =>
+    restaurant.address.toLowerCase().includes(cityName.toLowerCase())
+  );
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-50">
       <Header />
-      <main>
-        <section className="py-12">
-          <div className="container-custom">
-            <h1 className="text-3xl md:text-4xl font-medium mb-4 capitalize">
-              Restaurants in {cityInfo?.name || cityName}
+      <main className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Top Restaurants in {cityInfo.name}
             </h1>
-            <p className="text-gray-600 mb-8">
-              Discover the best {cityRestaurants.length} restaurants in {cityInfo?.name || cityName}, 
-              sorted by rating
+            <p className="text-gray-600 mt-2">
+              Discover the best dining experiences in {cityInfo.name}
             </p>
-
-            {cityRestaurants.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {cityRestaurants.map((restaurant) => (
-                  <RestaurantCard
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    name={restaurant.name}
-                    imageUrl={restaurant.imageUrl}
-                    rating={restaurant.rating}
-                    reviewCount={restaurant.reviewCount}
-                    address={restaurant.address}
-                    phone={restaurant.phone}
-                    websiteUrl={restaurant.websiteUrl}
-                    isTopRestaurant={restaurant.isTopRestaurant}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <h3 className="text-xl mb-2">No restaurants found</h3>
-                <p className="text-gray-600">
-                  We couldn't find any restaurants in this city. Please try another city.
-                </p>
-              </div>
-            )}
           </div>
-        </section>
+          <div className="text-right">
+            <p className="text-lg font-semibold text-gray-900">
+              {cityRestaurants.length} Restaurants
+            </p>
+            <p className="text-sm text-gray-600">Available in {cityInfo.name}</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cityRestaurants.map((restaurant) => (
+            <RestaurantCard
+              key={restaurant.id}
+              id={restaurant.id}
+              name={restaurant.name}
+              imageUrl={restaurant.imageUrl}
+              rating={restaurant.rating}
+              reviewCount={restaurant.reviewCount}
+              address={restaurant.address}
+              phone={restaurant.phone}
+              websiteUrl={restaurant.websiteUrl}
+              isTopRestaurant={restaurant.isTopRestaurant}
+            />
+          ))}
+        </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 } 
