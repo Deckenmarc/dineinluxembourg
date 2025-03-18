@@ -25,6 +25,7 @@
       "handle": "miss"
     },
     {
+      "src": "/(.*)",
       "check": true
     },
     {
