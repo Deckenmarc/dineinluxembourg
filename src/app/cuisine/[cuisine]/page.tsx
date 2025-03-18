@@ -3,6 +3,13 @@ import Footer from "@/components/Footer";
 import RestaurantCard from "@/components/RestaurantCard";
 import { topRestaurants, cuisines } from "@/data/restaurants";
 
+// Add the required generateStaticParams function for static export
+export function generateStaticParams() {
+  return cuisines.map((cuisine) => ({
+    cuisine: cuisine.path.replace('/cuisine/', ''),
+  }));
+}
+
 // @ts-nocheck - Disable TypeScript checking for this file
 export default async function CuisinePage({ params }: any) {
   const cuisineSlug = params.cuisine;

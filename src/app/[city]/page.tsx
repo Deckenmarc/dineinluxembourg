@@ -4,6 +4,13 @@ import RestaurantCard from "@/components/RestaurantCard";
 import { cities } from "@/data/restaurants";
 import { topRestaurants } from "@/data/restaurants";
 
+// Add the required generateStaticParams function for static export
+export function generateStaticParams() {
+  return cities.map((city) => ({
+    city: city.path.slice(1),
+  }));
+}
+
 // @ts-nocheck - Disable TypeScript checking for this file
 export default async function CityPage({ params }: any) {
   const citySlug = params.city;
