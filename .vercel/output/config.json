@@ -25,6 +25,9 @@
       "handle": "miss"
     },
     {
+      "check": true
+    },
+    {
       "src": "/(.*)",
       "dest": "/index"
     }
