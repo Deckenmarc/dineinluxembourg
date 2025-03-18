@@ -8,7 +8,7 @@
     }
   },
   "ignoreCommand": "git diff HEAD^ HEAD --quiet ./",
-  "version": 3,
+  "version": 2,
   "env": {
     "NEXT_TYPESCRIPT_IGNORE_BUILD_ERRORS": "1",
     "NEXT_ESLINT_IGNORE_BUILD_ERRORS": "1"
