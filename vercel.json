@@ -1,0 +1,12 @@
+{
+  "buildCommand": "bun run build",
+  "devCommand": "bun run dev",
+  "framework": "nextjs",
+  "git": {
+    "deploymentEnabled": {
+      "master": true
+    }
+  },
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet ./",
+  "version": 3
+} 
