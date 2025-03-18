@@ -7,7 +7,9 @@
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "netlify-build": "next build",
+    "postinstall": "node -v"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.3",
