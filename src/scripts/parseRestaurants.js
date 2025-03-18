@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // Read the large JSON file
 const inputFile = path.join(__dirname, '../../tableConvert.com_cxbx71.json');

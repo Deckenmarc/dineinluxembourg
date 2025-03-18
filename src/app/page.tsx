@@ -5,6 +5,7 @@ import RestaurantCard from "@/components/RestaurantCard";
 import CategoryCard from "@/components/CategoryCard";
 import FAQ from "@/components/FAQ";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { topRestaurants, cities, cuisines } from "@/data/restaurants";
 
 export default function Home() {
@@ -79,14 +80,14 @@ export default function Home() {
               ))}
             </div>
             
-            <div className="mt-8 text-center">
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-white"
-                asChild
-              >
-                <a href="/cities">View All Cities</a>
-              </Button>
+            <div className="text-center mt-8">
+              <Link href="/cities" className="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                <span className="mr-2">View all cities</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </Link>
             </div>
           </div>
         </section>
@@ -108,14 +109,14 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-8 text-center">
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-white"
-                asChild
-              >
-                <a href="/cuisine">View All Cuisines</a>
-              </Button>
+            <div className="text-center mt-8">
+              <Link href="/cuisine" className="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                <span className="mr-2">View all cuisines</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </Link>
             </div>
           </div>
         </section>
