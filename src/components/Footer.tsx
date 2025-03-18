@@ -31,7 +31,10 @@ export default function Footer() {
               href="/about"
               className="text-sm text-zinc-400 hover:text-white transition-colors"
             >
-              Learn more about us
+              DineINLuxembourg
+              2a Rue des Capucins, 
+              1313 Ville-Haute Luxembourg
+              +352 691339561
             </Link>
             <div className="mt-4">
               <Link
