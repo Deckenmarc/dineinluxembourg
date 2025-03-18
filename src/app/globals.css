@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 10% 12%; /* #211d1b dark gray */
+    --card: 0 0% 100%;
+    --card-foreground: 20 10% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 10% 12%;
+    --primary: 5 56% 46%; /* #b83c34 red */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 36 38% 52%; /* #b2925b gold/tan */
+    --secondary-foreground: 20 10% 12%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 36 38% 52%; /* #b2925b gold/tan */
+    --accent-foreground: 20 10% 12%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 5 56% 46%; /* #b83c34 red */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 10% 12%; /* #211d1b dark gray */
+    --foreground: 0 0% 98%;
+    --card: 20 10% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 20 10% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 5 56% 46%; /* #b83c34 red */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 36 38% 52%; /* #b2925b gold/tan */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 36 38% 52%; /* #b2925b gold/tan */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 5 56% 46%; /* #b83c34 red */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: var(--font-montserrat);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium;
+  }
+}
+
+@layer components {
+  .logo-text {
+    font-family: var(--font-dancing-script);
+  }
+
+  .container-custom {
+    @apply container mx-auto px-4 max-w-7xl;
+  }
+
+  .restaurant-card {
+    @apply relative overflow-hidden rounded-lg border shadow hover:shadow-md transition-shadow;
+  }
+
+  .restaurant-card-image {
+    @apply aspect-video w-full object-cover;
+  }
+
+  .top-restaurant-badge {
+    @apply absolute top-4 right-4 bg-primary text-white text-xs font-bold py-1 px-2 rounded;
+  }
+
+  .star-rating {
+    @apply flex items-center text-yellow-400;
+  }
+
+  .category-card {
+    @apply border rounded-lg p-4 text-center hover:shadow-md transition-shadow hover:border-primary;
+  }
+
+  .visit-website-btn {
+    @apply bg-primary text-white py-1 px-3 rounded text-sm inline-block hover:bg-primary/90 transition-colors;
+  }
+}

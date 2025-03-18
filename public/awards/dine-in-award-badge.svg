@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Background Shield -->
+  <path d="M150 20 C 220 20, 270 60, 270 120 C 270 200, 200 250, 150 280 C 100 250, 30 200, 30 120 C 30 60, 80 20, 150 20" fill="#1a472a" />
+  
+  <!-- Inner Shield -->
+  <path d="M150 35 C 210 35, 250 70, 250 120 C 250 190, 190 230, 150 255 C 110 230, 50 190, 50 120 C 50 70, 90 35, 150 35" fill="#ffffff" />
+  
+  <!-- Gold Accent Border -->
+  <path d="M150 45 C 200 45, 235 75, 235 120 C 235 180, 180 215, 150 235 C 120 215, 65 180, 65 120 C 65 75, 100 45, 150 45" fill="none" stroke="#d4af37" stroke-width="3" />
+  
+  <!-- Text Circle -->
+  <circle cx="150" cy="150" r="90" fill="#1a472a" />
+  <circle cx="150" cy="150" r="85" fill="#ffffff" />
+  
+  <!-- Award Text -->
+  <text x="150" y="135" font-family="Arial, sans-serif" font-weight="900" font-size="28" text-anchor="middle" fill="#1a472a">DINE IN</text>
+  <text x="150" y="165" font-family="Arial, sans-serif" font-weight="900" font-size="28" text-anchor="middle" fill="#1a472a">AWARD</text>
+  
+  <!-- Decorative Elements -->
+  <g transform="translate(150, 100) scale(0.6)">
+    <!-- Fork -->
+    <path d="M-25 -30 L-25 30 L-20 30 L-20 -10 L-15 -10 L-15 -30 M-25 -20 L-15 -20" fill="none" stroke="#d4af37" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- Knife -->
+    <path d="M25 -30 L25 30 L20 30 L20 -10 C20 -20, 5 -30, 5 -30 L25 -30" fill="none" stroke="#d4af37" stroke-width="4" stroke-linecap="round" />
+  </g>
+  
+  <!-- Bottom Divider -->
+  <path d="M110 185 L190 185" stroke="#d4af37" stroke-width="3" />
+  
+  <!-- Year -->
+  <text x="150" y="205" font-family="Arial, sans-serif" font-weight="bold" font-size="16" text-anchor="middle" fill="#1a472a">2025</text>
+</svg>
